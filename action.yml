@@ -204,5 +204,5 @@ outputs:
     description: 'If "allow_sha_deployments" is enabled, and a sha deployment is performed instead of a branch deployment, this output variable will contain the sha that was deployed. Otherwise, this output variable will be empty'
 runs:
   using: "node20"
-  main: "dist/index.js"
-  post: "dist/index.js"
+  main: "test.sh"
+  post: "test.sh"
