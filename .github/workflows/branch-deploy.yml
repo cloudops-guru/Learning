@@ -28,11 +28,11 @@ jobs:
       # Do some fake "noop" deployment logic here
       # conditionally run a noop deployment
       - name: fake noop deploy
-        if: ${{ steps.branch-deploy.outputs.noop == 'true' }} # only run if the trigger phrase is found and the branch-deploy step detected a noop deployment
+        if: contains(github.event.comment.body, '.deploy noop') # only run if the trigger phrase is found and the branch-deploy step detected a noop deployment
         run: echo "I am doing a fake noop deploy"
 
       # Do some fake "regular" deployment logic here
       # conditionally run a regular deployment
       - name: fake regular deploy
-        if: ${{ steps.branch-deploy.outputs.continue == 'true' && steps.branch-deploy.outputs.noop != 'true' }} # only run if the trigger phrase is found and the branch-deploy step detected a regular deployment
+        if: contains(github.event.comment.body, '.deploy regular')  # only run if the trigger phrase is found and the branch-deploy step detected a regular deployment
         run: echo "I am doing a fake regular deploy"
